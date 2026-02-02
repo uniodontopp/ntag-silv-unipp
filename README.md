@@ -3,7 +3,7 @@
 Este é o repositório do meu cartão de visitas pessoal, desenvolvido com foco em performance e estética minimalista.
 
 ## 🚀 Link do Projeto
-Você pode acessar o cartão clicando aqui: https://uniodontopp.github.io/ntag-luc-unipp
+Você pode acessar o cartão clicando aqui: https://uniodontopp.github.io/ntag-silv-unipp
 
 ## 🛠️ Tecnologias Utilizadas
 * **HTML5/CSS3**: Estrutura e estilização.
