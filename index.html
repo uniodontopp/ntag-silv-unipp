@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow"> 
+    <title>Cartão Digital</title> 
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Georama:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        /* --- CONFIGURAÇÕES VISUAIS --- */
+        :root {
+            --bg: #810e56;             
+            --shape-cyan: #70cddf;     
+            --shape-dark: #560b49;     
+            
+            /* COR DO CARTÃO (Sólido Roxo Escuro - Tema Dark) */
+            --card: rgba(86, 11, 73, 0.9); 
+            
+            --text: #ffffff;           
+            --accent: #ffffff;         
+            --hover-light: #ffffff;    
+            --glass-border: rgba(255, 255, 255, 0.15);
+        }
+
+        body { 
+            background-color: var(--bg);
+            background-image: 
+                radial-gradient(circle at 0% 0%, var(--shape-cyan) 0%, var(--shape-cyan) 35%, transparent 35.1%),
+                radial-gradient(circle at 80% 110%, var(--shape-dark) 0%, var(--shape-dark) 50%, transparent 50.1%);
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: var(--text); 
+            font-family: 'Georama', sans-serif;
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            min-height: 100vh; 
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        .bento-grid { 
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); 
+            grid-gap: 12px; 
+            max-width: 400px; 
+            width: 95%; 
+            padding: 20px;
+        }
+
+        .card { 
+            background: var(--card);   
+            border-radius: 28px; 
+            padding: 25px;
+            text-decoration: none; 
+            color: var(--text) !important; 
+            display: flex;
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: center;
+            transition: 0.3s ease; 
+            border: 1px solid var(--glass-border);
+            /* Sem blur, visual sólido */
+            cursor: pointer;
+            
+            /* Preparação para animação via JS */
+            opacity: 0; 
+            transform: translateY(20px);
+        }
+
+        .card.visible { animation: reveal 0.8s ease-out forwards; }
+
+        .card:hover { 
+            transform: translateY(-5px); 
+            border-color: var(--hover-light); 
+            background: rgba(110, 20, 95, 1); 
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .full { grid-column: span 2; }
+        .hidden { display: none !important; }
+
+        .profile-pic { 
+            width: 90px; 
+            height: 90px; 
+            border-radius: 50%; 
+            background: linear-gradient(45deg, #aaa, #ddd); 
+            margin-bottom: 15px; 
+            object-fit: cover; 
+            border: 3px solid rgba(255, 255, 255, 0.2);
+        }
+
+        h1 { font-size: 1.5rem; margin: 5px 0; font-weight: 700; text-align: center;}
+        
+        p { font-size: 0.9rem; opacity: 0.9; text-align: center; margin-bottom: 10px; font-weight: 400; display: flex; align-items: center; gap: 6px; justify-content: center; }
+        
+        .label { font-weight: 600; font-size: 0.85rem; color: var(--accent); margin-top: 8px; text-align: center;}
+
+        @keyframes reveal { to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body>
+
+    <div class="bento-grid">
+        
+        <a href="" target="_blank" class="card full" id="card-profile">
+            <img src="" alt="Foto de Perfil" class="profile-pic" id="foto-perfil">
+            <h1 id="nome-colaborador">...</h1>
+            <p>
+                <span id="cargo-colaborador">...</span> 
+                <i class="fa-brands fa-linkedin" id="icone-linkedin-perfil" style="font-size: 0.9em; opacity: 0.7; display: none;"></i>
+            </p>
+        </a>
+
+        <a href="" class="card full" id="link-planos">
+            <i class="fa-solid fa-clipboard-list" style="font-size: 2rem;"></i>
+            <span class="label">Planos e Coberturas</span>
+        </a>
+
+        <a href="" class="card" target="_blank" id="link-whatsapp">
+            <i class="fa-brands fa-whatsapp" style="font-size: 2rem;"></i>
+            <span class="label">WhatsApp</span>
+        </a>
+
+        <a href="" class="card" target="_blank" id="link-instagram">
+            <i class="fa-brands fa-instagram" style="font-size: 2rem;"></i>
+            <span class="label">Instagram</span>
+        </a>
+
+        <a href="" class="card full" target="_blank" id="link-dentista">
+            <i class="fa-solid fa-tooth" style="font-size: 2rem;"></i>
+            <span class="label">Encontre seu Dentista</span>
+        </a>
+    </div>
+
+    <script>
+        // ==========================================
+        // ÁREA DE DADOS DA COLABORADORA
+        // ==========================================
+        const colaborador = {
+            nome: "Luciana Xavier",
+            cargo: "Comercial",
+            
+            // Link do LinkedIn da Luciana
+            linkedinPessoal: "https://www.linkedin.com/in/luciana-xavier-otiai-5bab09148/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
+            
+            // Link para a página de planos (Arquivo interno)
+            linkPlanos: "planos.html", 
+            
+            // FOTO ATUALIZADA
+            fotoUrl: "https://media.licdn.com/dms/image/v2/D4D03AQGWzmdQ8dIPlw/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1674659246892?e=1771459200&v=beta&t=v40zY2xMSFgdnLfow0rSD70jUkRIhSZzqbx5qLRKEfg", 
+            
+            // WhatsApp da Luciana
+            whatsapp: "5518996719437", 
+            
+            // Links Padrão da Empresa
+            instagram: "https://www.instagram.com/uniodontoprudente/", 
+            buscaDentista: "https://seguro.fisistemas.com.br/EncontreSeuDentista/pesquisa;s=336017"
+        };
+
+        // ==========================================
+        // LÓGICA DO SISTEMA
+        // ==========================================
+        
+        document.title = `${colaborador.nome} | Contato`;
+        document.getElementById('nome-colaborador').innerText = colaborador.nome;
+        document.getElementById('cargo-colaborador').innerText = colaborador.cargo;
+        
+        const cardProfile = document.getElementById('card-profile');
+        const iconProfile = document.getElementById('icone-linkedin-perfil');
+        if(colaborador.linkedinPessoal) {
+            cardProfile.href = colaborador.linkedinPessoal;
+            iconProfile.style.display = 'inline-block'; 
+        } else {
+            cardProfile.removeAttribute('href');
+            cardProfile.style.cursor = 'default';
+            iconProfile.style.display = 'none';
+        }
+
+        const imgElement = document.getElementById('foto-perfil');
+        if (colaborador.fotoUrl && colaborador.fotoUrl.length > 10) {
+            imgElement.src = colaborador.fotoUrl;
+        } else {
+            imgElement.style.display = 'none';
+            const divIcon = document.createElement('div');
+            divIcon.className = 'profile-pic';
+            divIcon.innerHTML = '<i class="fa-solid fa-user" style="font-size:40px; color:#fff; display:flex; justify-content:center; align-items:center; height:100%;"></i>';
+            cardProfile.insertBefore(divIcon, cardProfile.children[0]);
+        }
+
+        const configBtn = (id, link, prefix = '') => {
+            const el = document.getElementById(id);
+            if(link) el.href = prefix + link;
+            else el.classList.add('hidden');
+        };
+
+        configBtn('link-whatsapp', colaborador.whatsapp, 'https://wa.me/');
+        configBtn('link-instagram', colaborador.instagram);
+        configBtn('link-dentista', colaborador.buscaDentista);
+        configBtn('link-planos', colaborador.linkPlanos);
+
+        const cards = document.querySelectorAll('.card');
+        cards.forEach((card, index) => {
+            if(!card.classList.contains('hidden')){
+                card.style.animationDelay = `${index * 0.15}s`;
+                card.classList.add('visible');
+            }
+        });
+    </script>
+</body>
+</html>
