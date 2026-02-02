@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow"> 
+    <title>Plano Ouro | Uniodonto</title> 
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Georama:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        /* --- CONFIGURAÇÕES VISUAIS --- */
+        :root {
+            --bg-vinho: #810e56;     
+            --shape-cyan: #70cddf;     
+            --shape-dark: #560b49; 
+            --text-dark: #333;
+            
+            /* Cores específicas do Card */
+            --header-purple: #810e56; 
+        }
+
+        body { 
+            background-color: var(--bg-vinho);
+            background-image: 
+                radial-gradient(circle at 0% 0%, var(--shape-cyan) 0%, var(--shape-cyan) 35%, transparent 35.1%),
+                radial-gradient(circle at 80% 110%, var(--shape-dark) 0%, var(--shape-dark) 50%, transparent 50.1%);
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: var(--text-dark); 
+            font-family: 'Georama', sans-serif;
+            display: flex; 
+            justify-content: center; 
+            min-height: 100vh; 
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container { 
+            max-width: 400px; 
+            width: 100%; 
+        }
+
+        /* --- BOTÃO VOLTAR (Branco Sólido) --- */
+        .btn-voltar {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 20px;
+            color: var(--header-purple); /* Texto Roxo */
+            text-decoration: none;
+            font-weight: 700;
+            background: #ffffff; /* Fundo Branco Sólido */
+            padding: 10px 20px;
+            border-radius: 30px;
+            transition: 0.3s;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        .btn-voltar:hover { 
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+        }
+
+        /* --- O CARD ESTILO PANFLETO --- */
+        .pamphlet-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            position: relative;
+            text-align: left;
+        }
+
+        /* Cabeçalho Roxo Curvo */
+        .card-header {
+            background-color: var(--header-purple);
+            color: #dcdb4e; 
+            padding: 20px;
+            text-align: center;
+            border-radius: 20px 20px 0 0; 
+        }
+
+        .card-header h1 {
+            margin: 0;
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: -1px;
+        }
+
+        .subtitle-box {
+            background: #f4f4f4;
+            color: #333;
+            text-align: center;
+            padding: 8px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            border-bottom: 1px solid #ddd;
+        }
+
+        /* Lista de Itens */
+        .card-body {
+            padding: 25px;
+            position: relative;
+        }
+
+        .items-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            font-size: 1.1rem; 
+            line-height: 1.5;
+            color: #444;
+            font-weight: 500;
+        }
+
+        .items-list li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: flex-start; 
+        }
+        
+        /* Estilo do Ícone Check */
+        .items-list li i {
+            color: var(--header-purple); 
+            margin-right: 10px;
+            font-size: 1rem;
+            margin-top: 4px; 
+        }
+
+        /* Rodapé com Link - CENTRALIZADO */
+        .card-footer {
+            padding: 0 25px 30px 25px; 
+            font-size: 0.85rem;
+            color: #666;
+            line-height: 1.4;
+            text-align: center; 
+        }
+        .website-link {
+            color: var(--header-purple);
+            font-weight: 700;
+            text-decoration: none;
+            display: block;
+            margin-top: 5px;
+        }
+
+        /* --- BOTÃO COTAR (Ajustado) --- */
+        .btn-cotar {
+            display: block;
+            margin: 20px 25px 25px 25px; 
+            background: var(--header-purple);
+            color: white;
+            text-align: center;
+            padding: 12px; /* Reduzido de 15px para ficar mais elegante */
+            border-radius: 12px;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 1.05rem;
+            transition: 0.3s;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.15); /* Sombra suave */
+        }
+        .btn-cotar:hover {
+            background: #5e083d;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.25);
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <a href="javascript:history.back()" class="btn-voltar">
+            <i class="fa-solid fa-arrow-left"></i> Voltar
+        </a>
+
+        <div class="pamphlet-card">
+            
+            <div class="card-header">
+                <h1>Plano Ouro</h1>
+            </div>
+            
+            <div class="subtitle-box">
+                Mais de 132 procedimentos
+            </div>
+
+            <div class="card-body">
+                
+                <ul class="items-list">
+                    <li><i class="fa-solid fa-check"></i> Consultas;</li>
+                    <li><i class="fa-solid fa-check"></i> Urgência;</li>
+                    <li><i class="fa-solid fa-check"></i> Odontopediatria;</li>
+                    <li><i class="fa-solid fa-check"></i> Prevenção;</li>
+                    <li><i class="fa-solid fa-check"></i> Restauração;</li>
+                    <li><i class="fa-solid fa-check"></i> Radiografia;</li>
+                    <li><i class="fa-solid fa-check"></i> Cirurgia;</li>
+                    <li><i class="fa-solid fa-check"></i> Periodontia (tratamento das doenças da gengiva);</li>
+                    <li><i class="fa-solid fa-check"></i> Endodontia (tratamento de canal);</li>
+                    <li><i class="fa-solid fa-check"></i> Prótese (provisória e metálica)</li>
+                    <li><i class="fa-solid fa-check"></i> E muito mais.</li>
+                </ul>
+
+                <a href="https://wa.me/5518996719437?text=Olá Silvio, vi o folheto do Plano Ouro e gostaria de saber mais." class="btn-cotar">
+                    Cotar Agora
+                </a>
+            </div>
+
+            <div class="card-footer">
+                Consulte cobertura completa do plano no nosso site:<br>
+                <a href="https://www.uniodontoprudente.com.br" class="website-link" target="_blank">www.uniodontoprudente.com.br</a>
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>
